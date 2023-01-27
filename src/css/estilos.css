@@ -1,0 +1,143 @@
+body {
+    font-family: 'Poppins';
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between; /*demos um espaço entre as tags*/
+    padding: 30px;
+    max-width: 1440px; /*espaço do cabeçalho*/
+    margin: 0 auto; /* centralizar o cabecalho*/
+}
+
+.cabecalho .logo {
+    width: 65px;
+}
+
+.cabecalho .menu{
+    display: flex; /*deixa um ao lado do outro*/
+    align-items: center; /*alinhamento vertical, para o elemento ser alinhado ele precisa de espaço de altura*/
+    height: 100%; /*espaço de altura, ocupando 100% da altura do pai que 
+    eles está (cabecalho)*/
+}
+
+.cabecalho nav li a /*especificamos o local exato que está o link para só estilizar ele e não todos da pagina*/ {
+    font-weight: bold; /*negrito*/
+    color: #ffffff; /*cor do texto branco*/
+    font-size: 25px; /*tamanho da fonte*/
+    padding: 10px 20px; /*espaçamento interno 10px borda do topo e inferior e lados 20px*/
+    border-radius: 50px; /*deixar bordas arredondadas*/
+    transition: 0.4s; /*uma transição para quando o mouse passar em cima*/
+}
+
+.cabecalho nav li a:hover /*firula para quando o mouse passar por cima*/ {
+    background-color: #d5011d;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    /*height: 100vh; altura do view-port, então altura da tela do usuário*/
+    height: calc(100vh - 132px); /*uma função que está pegando o valor da tela do menu e tirando o valor do menu(ispecionar elementos conseguimos ver isso) para não ficar o scroll*/
+    padding: 0 30px 30px ;
+}
+
+.container .imagem-titulo {
+    max-width: 500px; /*ajustou a largura e altura com 500 px automatico*/
+
+}
+
+.container .descricao {
+    color: #a8adb7;
+    width: 85%;
+    font-size: 18px;
+    margin: 30px 0;
+}
+
+.container .botao-trailer {
+    background-color: #ff0021;
+    color: #ffffff;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer; /*quando apassar em cima vai alterar o curso*/
+    border: none; /*tirar a borda*/
+    text-transform: uppercase; /*deixar todo maisculo*/
+    transition: 0.5s all /*transição deixar mais leve, todas propriedades*/ ease-in-out; /*o tipo da transição é o ease=in=out, mas lembra de colocar uma propriedade de hover para funcionar*/ 
+}
+
+.container .botao-trailer:hover {
+    transform: scale(1.1) ; /*uma transforamção do elemento, scale é para escalar e o valor dentro e o tanto que vai escalar*/
+}
+
+
+.fundo-video{
+    position: absolute; /*tira o elemento do contexto atual e cria um novo elemento (como colocasse em uma folha separada em cima)*/
+    z-index: -1; /*posiciona o elemento no eixo z(eixo de profundidade) como é negativo, ele fica atrás*/
+    width: 100vw; /*100% do tamanho da largura do dispostivo*/
+    height: 100vh; /*100% da altura do dispositivo*/
+    overflow: hidden; /*transbordar, esconde o transbordo e tira o scroll*/
+    display: flex;
+    justify-content: center;
+}
+
+.fundo-video .video{
+    height: 100vh;
+}
+
+.fundo-video::after /*fazer a opacidade para deixar o video rolando atras*/ {
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    position: absolute; /*aparecer por cima*/
+    top: 0;
+    left: 0;
+    /*utilizamos o css gradient para pegar essa estrutura abaixo*/
+
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,1) 100%);
+}
+
+.modal {
+    position: fixed; /*ficar fixada na tela na mesma posição*/
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 52, 50, 0.749);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.conteudo-modal {
+    display: flex;
+    justify-content: center; /*centralizar*/
+    align-items: center; /*para funcionar precisamos colocar uma altura e largura*/
+    flex-direction: column; /*para deixar os elementos em colunas e não em linhas*/
+    height: 100vh;
+    gap: 15px;
+
+}
+
+.fechar-modal{
+    background-color: #ffffff;
+    color: #f03a17;
+    font-weight: bold;
+    font-size: 20px;
+    width: 40px;
+    text-align: center; /*alinhas textos ao centro*/
+    cursor: pointer ;
+    border-radius: 10px;
+}
+
+.modal iframe{
+    border-width: 0; /*tirar a borda*/
+    width: 640px;
+    height: 360px;
+}
+
+.modal.aberto {
+    opacity: 1;
+    visibility: visible;
+}
